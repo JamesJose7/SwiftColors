@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ProjectMemoryGame.iml" filepath="$PROJECT_DIR$/ProjectMemoryGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SwiftColors.iml" filepath="$PROJECT_DIR$/SwiftColors.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

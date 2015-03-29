@@ -291,28 +291,28 @@ public class Game extends Activity {
         String color = "";
 
         if(drawable == blueTile) {
-            color = "BLUE";
+            color = "Blue";
         }
         else if (drawable == greenTile) {
-            color = "GREEN";
+            color = "Green";
         }
         else if (drawable == limeTile) {
-            color = "LIMEGREEN";
+            color = "Lime";
         }
         else if (drawable == orangeTile) {
-            color = "ORANGE";
+            color = "Orange";
         }
         else if (drawable == purpleTile) {
-            color = "PURPLE";
+            color = "Purple";
         }
         else if (drawable == redTile) {
-            color = "RED";
+            color = "Red";
         }
         else if (drawable == skyBlueTile) {
-            color = "SKYBLUE";
+            color = "Sky Blue";
         }
         else if (drawable == yellowTile) {
-            color = "YELLOW";
+            color = "Yellow";
         }
 
 

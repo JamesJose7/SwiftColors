@@ -9,14 +9,14 @@ import java.util.Random;
  */
 public class Asker {
     private String[] mColorText = {
-            "RED",
-            "YELLOW",
-            "BLUE",
-            "GREEN",
-            "ORANGE",
-            "PURPLE",
-            "SKYBLUE",
-            "LIMEGREEN"
+            "Red",
+            "Yellow",
+            "Blue",
+            "Green",
+            "Orange",
+            "Purple",
+            "Sky Blue",
+            "Lime"
     };
     private String[] mColor = {
             "#ff0000ff",
