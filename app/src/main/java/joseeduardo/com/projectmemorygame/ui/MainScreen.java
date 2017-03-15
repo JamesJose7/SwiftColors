@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import joseeduardo.com.projectmemorygame.BuildConfig;
 import joseeduardo.com.projectmemorygame.R;
 
@@ -18,7 +19,6 @@ import joseeduardo.com.projectmemorygame.R;
 public class MainScreen extends Activity {
 
     @BindView(R.id.versionTextView) TextView versionText;
-    @BindView(R.id.startGame) ImageView startGameButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +29,11 @@ public class MainScreen extends Activity {
         //Version
         String version = BuildConfig.VERSION_NAME;
         versionText.setText(version);
+    }
 
-        startGameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startGameActivity();
-            }
-        });
-
+    @OnClick(R.id.startGame)
+    public void startGame() {
+        startGameActivity();
     }
 
     private void startGameActivity() {

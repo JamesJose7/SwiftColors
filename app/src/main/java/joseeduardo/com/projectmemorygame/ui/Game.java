@@ -18,12 +18,16 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import joseeduardo.com.projectmemorygame.BuildConfig;
 import joseeduardo.com.projectmemorygame.R;
 import joseeduardo.com.projectmemorygame.model.Asker;
 import joseeduardo.com.projectmemorygame.model.ScoreBoard;
 
 public class Game extends Activity {
+
+    public static final String PREFS_KEY = "prefsKey";
+    public static final String HIGH_SCORE = "highScore";
 
     private Asker mAsker = new Asker();
     private ScoreBoard mScoreBoard = new ScoreBoard();
@@ -84,196 +88,76 @@ public class Game extends Activity {
         yellowButton.getDrawableState();
 
         // Get the previous highscore
-        SharedPreferences prefs = this.getSharedPreferences("prefsKey", Context.MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        mSavedScore = prefs.getInt("highScore", 0);
+        mSavedScore = prefs.getInt(HIGH_SCORE, 0);
+    }
 
-        redButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //String answer = "RED";
-                String askerDisplay = mAskerTextView.getText().toString();
-                String answer = getDrawableStringName(redButton.getBackground());
+    @OnClick(R.id.redButton)
+    public void redButton(View view) {
+        //String answer = "RED";
+        checkButtonsAnswer(view.getBackground());
+    }
 
-                if (checkAnswers(answer, askerDisplay)) {
-                    setAsker();
-                    //Increase score
-                    updateScore();
+    @OnClick(R.id.yellowButton)
+    public void yellowButton(View view) {
+        //String answer = "YELLOW";
+        checkButtonsAnswer(view.getBackground());
+    }
 
-                    mTimer.cancel();
-                    mTimer.start();
-                    shuffleTilesAndSetColor();
-                } else {
-                    checkEmptyScore();
-                    getHighScore();
-                    startLostScreenActivity(mNewScore);
-                }
-            }
-        });
+    @OnClick(R.id.greenButton)
+    public void greenButton(View view) {
+        //String answer = "GREEN";
+        checkButtonsAnswer(view.getBackground());
+    }
 
-        yellowButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //String answer = "YELLOW";
-                String askerDisplay = mAskerTextView.getText().toString();
-                String answer = getDrawableStringName(yellowButton.getBackground());
+    @OnClick(R.id.blueButton)
+    public void blueButton(View view) {
+        //String answer = "BLUE";
+        checkButtonsAnswer(view.getBackground());
+    }
 
-                if (checkAnswers(answer, askerDisplay)) {
-                    setAsker();
-                    // Increase score
-                    updateScore();
+    @OnClick(R.id.orangeButton)
+    public void orangeButton(View view) {
+        //String answer = "ORANGE";
+        checkButtonsAnswer(view.getBackground());
+    }
 
-                    mTimer.cancel();
-                    mTimer.start();
-                    shuffleTilesAndSetColor();
-                } else {
-                    checkEmptyScore();
-                    getHighScore();
-                    startLostScreenActivity(mNewScore);
-                }
-            }
-        });
+    @OnClick(R.id.purpleButton)
+    public void purpleButton(View view) {
+        //String answer = "PURPLE";
+        checkButtonsAnswer(view.getBackground());
+    }
 
-        greenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //String answer = "GREEN";
-                String askerDisplay = mAskerTextView.getText().toString();
-                String answer = getDrawableStringName(greenButton.getBackground());
+    @OnClick(R.id.skyblueButton)
+    public void skyBlueButton(View view) {
+        //String answer = "SKYBLUE";
+        checkButtonsAnswer(view.getBackground());
+    }
 
-                if (checkAnswers(answer, askerDisplay)) {
-                    setAsker();
-                    // Increase Score
-                    updateScore();
+    @OnClick(R.id.limegreenButton)
+    public void limeGreenButton(View view) {
+        //String answer = "LIMEGREEN";
+        checkButtonsAnswer(view.getBackground());
+    }
 
-                    mTimer.cancel();
-                    mTimer.start();
-                    shuffleTilesAndSetColor();
-                } else {
-                    checkEmptyScore();
-                    getHighScore();
-                    startLostScreenActivity(mNewScore);
-                }
-            }
-        });
+    private void checkButtonsAnswer(Drawable background) {
+        String askerDisplay = mAskerTextView.getText().toString();
+        String answer = getDrawableStringName(background);
 
-        blueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //String answer = "BLUE";
-                String askerDisplay = mAskerTextView.getText().toString();
-                String answer = getDrawableStringName(blueButton.getBackground());
+        if (checkAnswers(answer, askerDisplay)) {
+            setAsker();
+            //Increase score
+            updateScore();
 
-                if (checkAnswers(answer, askerDisplay)) {
-                    setAsker();
-                    // Increase Score
-                    updateScore();
-
-                    mTimer.cancel();
-                    mTimer.start();
-                    shuffleTilesAndSetColor();
-                } else {
-                    checkEmptyScore();
-                    getHighScore();
-                    startLostScreenActivity(mNewScore);
-                }
-            }
-        });
-
-        orangeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //String answer = "ORANGE";
-                String askerDisplay = mAskerTextView.getText().toString();
-                String answer = getDrawableStringName(orangeButton.getBackground());
-
-                if (checkAnswers(answer, askerDisplay)) {
-                    setAsker();
-                    // Increase Score
-                    updateScore();
-
-                    mTimer.cancel();
-                    mTimer.start();
-                    shuffleTilesAndSetColor();
-                } else {
-                    checkEmptyScore();
-                    getHighScore();
-                    startLostScreenActivity(mNewScore);
-                }
-            }
-        });
-
-        purpleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //String answer = "PURPLE";
-                String askerDisplay = mAskerTextView.getText().toString();
-                String answer = getDrawableStringName(purpleButton.getBackground());
-
-                if (checkAnswers(answer, askerDisplay)) {
-                    setAsker();
-                    // Increase Score
-                    updateScore();
-
-                    mTimer.cancel();
-                    mTimer.start();
-                    shuffleTilesAndSetColor();
-                } else {
-                    checkEmptyScore();
-                    getHighScore();
-                    startLostScreenActivity(mNewScore);
-                }
-            }
-        });
-
-        skyblueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //String answer = "SKYBLUE";
-                String askerDisplay = mAskerTextView.getText().toString();
-                String answer = getDrawableStringName(skyblueButton.getBackground());
-
-                if (checkAnswers(answer, askerDisplay)) {
-                    setAsker();
-                    // Increase Score
-                    updateScore();
-
-                    skyblueButton.setBackgroundColor(Color.parseColor("#ffffff"));
-
-                    mTimer.cancel();
-                    mTimer.start();
-                    shuffleTilesAndSetColor();
-                } else {
-                    checkEmptyScore();
-                    getHighScore();
-                    startLostScreenActivity(mNewScore);
-                }
-            }
-        });
-
-        limeGreenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //String answer = "LIMEGREEN";
-                String askerDisplay = mAskerTextView.getText().toString();
-                String answer = getDrawableStringName(limeGreenButton.getBackground());
-
-                if (checkAnswers(answer, askerDisplay)) {
-                    setAsker();
-                    // Increase Score
-                    updateScore();
-
-                    mTimer.cancel();
-                    mTimer.start();
-                    shuffleTilesAndSetColor();
-                } else {
-                    checkEmptyScore();
-                    getHighScore();
-                    startLostScreenActivity(mNewScore);
-                }
-            }
-        });
-
+            mTimer.cancel();
+            mTimer.start();
+            shuffleTilesAndSetColor();
+        } else {
+            checkEmptyScore();
+            getHighScore();
+            startLostScreenActivity(mNewScore);
+        }
     }
 
     private String getDrawableStringName(Drawable drawable) {

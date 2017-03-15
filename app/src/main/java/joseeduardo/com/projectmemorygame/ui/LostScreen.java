@@ -16,6 +16,7 @@ import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import joseeduardo.com.projectmemorygame.BuildConfig;
 import joseeduardo.com.projectmemorygame.R;
 import joseeduardo.com.projectmemorygame.model.ScoreBoard;
@@ -25,7 +26,6 @@ public class LostScreen extends Activity {
     @BindView(R.id.versionTextLost) TextView versionTextView;
     @BindView(R.id.lastScoreTextView) TextView lastScoreTextView;
     @BindView(R.id.highScoreTextView) TextView highScoreTextView;
-    @BindView(R.id.retryButton) ImageView retryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,25 +37,21 @@ public class LostScreen extends Activity {
         String version = BuildConfig.VERSION_NAME;
         versionTextView.setText(version);
 
-        retryButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startGameActivity();
-            }
-        });
-
         // Get score from previous activity
         Intent intent = getIntent();
         String score = intent.getStringExtra("score");
         lastScoreTextView.setText(score);
 
-
-        SharedPreferences prefs = this.getSharedPreferences("prefsKey", Context.MODE_PRIVATE);
-        int highScore = prefs.getInt("highScore", 0);
-
+        SharedPreferences prefs = this.getSharedPreferences(Game.PREFS_KEY, Context.MODE_PRIVATE);
+        int highScore = prefs.getInt(Game.HIGH_SCORE, 0);
 
         highScoreTextView.setText(highScore + "");
 
+    }
+
+    @OnClick(R.id.retryButton)
+    public void retryGame() {
+        startGameActivity();
     }
 
     public void startGameActivity() {
