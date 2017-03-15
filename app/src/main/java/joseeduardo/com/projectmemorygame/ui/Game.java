@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -152,24 +153,24 @@ public class Game extends Activity {
                 return roundDrawable.getColorName();
         }
 
-        return null;
+        return "";
     }
 
     private void shuffleTilesAndSetColor() {
-
         RoundDrawable[] tilesArray = RoundDrawable.values();
+        Button[] buttons = {blueButton, greenButton, limeGreenButton, orangeButton, purpleButton,
+            redButton, skyblueButton, yellowButton};
 
         List<RoundDrawable> tilesList =  Arrays.asList(tilesArray);
         Collections.shuffle(tilesList);
 
-        blueButton.setBackground(getResources().getDrawable(tilesArray[0].getId()));
-        greenButton.setBackground(getResources().getDrawable(tilesArray[1].getId()));
-        limeGreenButton.setBackground(getResources().getDrawable(tilesArray[2].getId()));
-        orangeButton.setBackground(getResources().getDrawable(tilesArray[3].getId()));
-        purpleButton.setBackground(getResources().getDrawable(tilesArray[4].getId()));
-        redButton.setBackground(getResources().getDrawable(tilesArray[5].getId()));
-        skyblueButton.setBackground(getResources().getDrawable(tilesArray[6].getId()));
-        yellowButton.setBackground(getResources().getDrawable(tilesArray[7].getId()));
+        for (int i = 0; i < tilesList.size(); i++) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                buttons[i].setBackground(getDrawable(tilesList.get(i).getId()));
+            } else {
+                buttons[i].setBackground(getResources().getDrawable(tilesList.get(i).getId()));
+            }
+        }
     }
 
     public void setAsker() {
