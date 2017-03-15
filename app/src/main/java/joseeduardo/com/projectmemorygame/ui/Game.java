@@ -16,6 +16,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import joseeduardo.com.projectmemorygame.BuildConfig;
 import joseeduardo.com.projectmemorygame.R;
 import joseeduardo.com.projectmemorygame.model.Asker;
@@ -27,9 +29,9 @@ public class Game extends Activity {
     private ScoreBoard mScoreBoard = new ScoreBoard();
     final Timer mTimer = new Timer(3000, 1000);
 
-    private TextView mAskerTextView;
-    private TextView mScoreTextView;
-    private TextView mTimeTextView;
+    @BindView(R.id.askerTextView) TextView mAskerTextView;
+    @BindView(R.id.scoreTextView) TextView mScoreTextView;
+    @BindView(R.id.timeTextView) TextView mTimeTextView;
 
     private String mNewScore;
     private int mSavedScore;
@@ -43,20 +45,22 @@ public class Game extends Activity {
     private Drawable skyBlueTile;
     private Drawable yellowTile;
 
-    private Button redButton;
-    private Button yellowButton;
-    private Button greenButton;
-    private Button blueButton;
-    private Button orangeButton;
-    private Button purpleButton;
-    private Button skyblueButton;
-    private Button limeGreenButton;
+    @BindView(R.id.redButton) Button redButton;
+    @BindView(R.id.yellowButton) Button yellowButton;
+    @BindView(R.id.greenButton) Button greenButton;
+    @BindView(R.id.blueButton) Button blueButton;
+    @BindView(R.id.orangeButton) Button orangeButton;
+    @BindView(R.id.purpleButton) Button purpleButton;
+    @BindView(R.id.skyblueButton) Button skyblueButton;
+    @BindView(R.id.limegreenButton) Button limeGreenButton;
+    @BindView(R.id.versionTextGame) TextView versionText;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        ButterKnife.bind(this);
 
         //All them drawables
         blueTile = getResources().getDrawable(R.drawable.blueroundedbutton);
@@ -71,21 +75,7 @@ public class Game extends Activity {
 
         //Version
         String version = BuildConfig.VERSION_NAME;
-        TextView version1 = (TextView) findViewById(R.id.versionTextView);
-        version1.setText(version);
-
-        mAskerTextView = (TextView) findViewById(R.id.askerTextView);
-        mScoreTextView = (TextView) findViewById(R.id.scoreTextView);
-        mTimeTextView = (TextView) findViewById(R.id.timeTextView);
-
-        redButton = (Button) findViewById(R.id.redButton);
-        yellowButton = (Button) findViewById(R.id.yellowButton);
-        greenButton = (Button) findViewById(R.id.greenButton);
-        blueButton = (Button) findViewById(R.id.blueButton);
-        orangeButton = (Button) findViewById(R.id.orangeButton);
-        purpleButton = (Button) findViewById(R.id.purpleButton);
-        skyblueButton = (Button) findViewById(R.id.skyblueButton);
-        limeGreenButton = (Button) findViewById(R.id.limegreenButton);
+        versionText.setText(version);
 
         setAsker();
         mTimer.start();

@@ -14,26 +14,28 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import joseeduardo.com.projectmemorygame.BuildConfig;
 import joseeduardo.com.projectmemorygame.R;
 import joseeduardo.com.projectmemorygame.model.ScoreBoard;
 
 public class LostScreen extends Activity {
 
+    @BindView(R.id.versionTextLost) TextView versionTextView;
+    @BindView(R.id.lastScoreTextView) TextView lastScoreTextView;
+    @BindView(R.id.highScoreTextView) TextView highScoreTextView;
+    @BindView(R.id.retryButton) ImageView retryButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lost_screen);
+        ButterKnife.bind(this);
 
         //Version
         String version = BuildConfig.VERSION_NAME;
-        TextView version1 = (TextView) findViewById(R.id.versionTextView);
-        version1.setText(version);
-
-        TextView lastScoreTextView = (TextView) findViewById(R.id.lastScoreTextView);
-        TextView highScoreTextView = (TextView) findViewById(R.id.highScoreTextView);
-        ImageView retryButton = (ImageView) findViewById(R.id.retryButton);
+        versionTextView.setText(version);
 
         retryButton.setOnClickListener(new View.OnClickListener() {
             @Override
