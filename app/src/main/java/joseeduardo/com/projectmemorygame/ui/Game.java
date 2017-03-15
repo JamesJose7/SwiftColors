@@ -4,10 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -22,14 +20,17 @@ import butterknife.OnClick;
 import joseeduardo.com.projectmemorygame.BuildConfig;
 import joseeduardo.com.projectmemorygame.R;
 import joseeduardo.com.projectmemorygame.model.Asker;
+import joseeduardo.com.projectmemorygame.model.Timer;
 import joseeduardo.com.projectmemorygame.model.RoundDrawable;
 import joseeduardo.com.projectmemorygame.model.ScoreBoard;
 
-public class Game extends Activity {
+public class Game extends Activity implements Timer.TimerListener {
 
     public static final String PREFS_KEY = "prefsKey";
     public static final String HIGH_SCORE = "highScore";
     public static final String SCORE = "score";
+
+    private int mCurrentDuration;
 
     private Asker mAsker;
     private ScoreBoard mScoreBoard;
@@ -61,7 +62,8 @@ public class Game extends Activity {
 
         mAsker = new Asker();
         mScoreBoard  = new ScoreBoard();
-        mTimer  = new Timer(3000, 1000);
+        mCurrentDuration = 5;
+        mTimer  = new Timer(mCurrentDuration, this);
 
         //Version
         String version = BuildConfig.VERSION_NAME;
@@ -133,7 +135,8 @@ public class Game extends Activity {
             //Increase score
             updateScore();
 
-            mTimer.cancel();
+            mTimer.cancelTimer();
+            mTimer = new Timer(mCurrentDuration, this);
             mTimer.start();
             shuffleTilesAndSetColor();
         } else {
@@ -184,12 +187,12 @@ public class Game extends Activity {
     public void checkEmptyScore() {
         if (mNewScore == null) {
             mNewScore = "0";
-            mTimer.cancel();
+            mTimer.cancelTimer();
         }
     }
 
     public void startLostScreenActivity(String score) {
-        mTimer.cancel();
+        mTimer.cancelTimer();
         Intent intent = new Intent(this, LostScreen.class);
         intent.putExtra(SCORE, score);
         startActivity(intent);
@@ -212,31 +215,21 @@ public class Game extends Activity {
         }
     }
 
-
-    public class Timer extends CountDownTimer {
-
-        public Timer(long millisInFuture, long countDownInterval) {
-            super(millisInFuture, countDownInterval);
-        }
-
-        @Override
-        public void onTick(long millisUntilFinished) {
-            mTimeTextView.setText(millisUntilFinished / 1000 + "");
-        }
-
-        @Override
-        public void onFinish() {
-            startLostScreenActivity(mNewScore);
-            checkEmptyScore();
-            getHighScore();
-        }
-
-
+    @Override
+    public void onFinish() {
+        startLostScreenActivity(mNewScore);
+        checkEmptyScore();
+        getHighScore();
     }
 
-
-
-
-
+    @Override
+    public void onTick() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mTimeTextView.setText(mTimer.getSeconds() + "");
+            }
+        });
+    }
 }
 
