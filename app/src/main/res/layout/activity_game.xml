@@ -49,9 +49,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/versionTextGame"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"/>
 
     <TextView

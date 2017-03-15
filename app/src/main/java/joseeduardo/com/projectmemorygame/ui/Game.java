@@ -40,7 +40,7 @@ public class Game extends Activity implements Timer.TimerListener {
     @BindView(R.id.scoreTextView) TextView mScoreTextView;
     @BindView(R.id.timeTextView) TextView mTimeTextView;
 
-    private String mNewScore;
+    private int mNewScore;
     private int mSavedScore;
 
     @BindView(R.id.redButton) Button redButton;
@@ -140,7 +140,6 @@ public class Game extends Activity implements Timer.TimerListener {
             mTimer.start();
             shuffleTilesAndSetColor();
         } else {
-            checkEmptyScore();
             getHighScore();
             startLostScreenActivity(mNewScore);
         }
@@ -184,14 +183,7 @@ public class Game extends Activity implements Timer.TimerListener {
         return false;
     }
 
-    public void checkEmptyScore() {
-        if (mNewScore == null) {
-            mNewScore = "0";
-            mTimer.cancelTimer();
-        }
-    }
-
-    public void startLostScreenActivity(String score) {
+    public void startLostScreenActivity(int score) {
         mTimer.cancelTimer();
         Intent intent = new Intent(this, LostScreen.class);
         intent.putExtra(SCORE, score);
@@ -199,17 +191,16 @@ public class Game extends Activity implements Timer.TimerListener {
     }
 
     public void updateScore() {
-        mNewScore = (mScoreBoard.increaseScore()) + "";
-        mScoreTextView.setText(mNewScore);
+        mNewScore = mScoreBoard.increaseScore();
+        mScoreTextView.setText(mNewScore + "");
     }
 
     public void getHighScore() {
-
         SharedPreferences prefs = getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
-        if (Integer.parseInt(mNewScore) > mSavedScore) {
-            int highScore = Integer.parseInt(mNewScore);
+        if (mNewScore > mSavedScore) {
+            int highScore = mNewScore;
             editor.putInt(HIGH_SCORE, highScore);
             editor.apply();
         }
@@ -218,7 +209,6 @@ public class Game extends Activity implements Timer.TimerListener {
     @Override
     public void onFinish() {
         startLostScreenActivity(mNewScore);
-        checkEmptyScore();
         getHighScore();
     }
 
