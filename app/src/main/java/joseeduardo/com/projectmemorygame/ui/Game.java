@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -22,6 +21,7 @@ import butterknife.OnClick;
 import joseeduardo.com.projectmemorygame.BuildConfig;
 import joseeduardo.com.projectmemorygame.R;
 import joseeduardo.com.projectmemorygame.model.Asker;
+import joseeduardo.com.projectmemorygame.model.RoundDrawable;
 import joseeduardo.com.projectmemorygame.model.ScoreBoard;
 
 public class Game extends Activity {
@@ -40,15 +40,6 @@ public class Game extends Activity {
 
     private String mNewScore;
     private int mSavedScore;
-
-    private Drawable blueTile;
-    private Drawable greenTile;
-    private Drawable limeTile;
-    private Drawable orangeTile;
-    private Drawable purpleTile;
-    private Drawable redTile;
-    private Drawable skyBlueTile;
-    private Drawable yellowTile;
 
     @BindView(R.id.redButton) Button redButton;
     @BindView(R.id.yellowButton) Button yellowButton;
@@ -71,17 +62,6 @@ public class Game extends Activity {
         mScoreBoard  = new ScoreBoard();
         mTimer  = new Timer(3000, 1000);
 
-        //All them drawables
-        blueTile = getResources().getDrawable(R.drawable.blueroundedbutton);
-        greenTile = getResources().getDrawable(R.drawable.greenroundedbutton);
-        limeTile = getResources().getDrawable(R.drawable.limegreenroundedbutton);
-        orangeTile = getResources().getDrawable(R.drawable.orangeroundedbutton);
-        purpleTile = getResources().getDrawable(R.drawable.purpleroundedbutton);
-        redTile = getResources().getDrawable(R.drawable.redroundedbutton);
-        skyBlueTile = getResources().getDrawable(R.drawable.skyblueroundedbutton);
-        yellowTile = getResources().getDrawable(R.drawable.yellowroundedbutton);
-
-
         //Version
         String version = BuildConfig.VERSION_NAME;
         versionText.setText(version);
@@ -101,54 +81,54 @@ public class Game extends Activity {
     @OnClick(R.id.redButton)
     public void redButton(View view) {
         //String answer = "RED";
-        checkButtonsAnswer(view.getBackground());
+        checkButtonsAnswer(view);
     }
 
     @OnClick(R.id.yellowButton)
     public void yellowButton(View view) {
         //String answer = "YELLOW";
-        checkButtonsAnswer(view.getBackground());
+        checkButtonsAnswer(view);
     }
 
     @OnClick(R.id.greenButton)
     public void greenButton(View view) {
         //String answer = "GREEN";
-        checkButtonsAnswer(view.getBackground());
+        checkButtonsAnswer(view);
     }
 
     @OnClick(R.id.blueButton)
     public void blueButton(View view) {
         //String answer = "BLUE";
-        checkButtonsAnswer(view.getBackground());
+        checkButtonsAnswer(view);
     }
 
     @OnClick(R.id.orangeButton)
     public void orangeButton(View view) {
         //String answer = "ORANGE";
-        checkButtonsAnswer(view.getBackground());
+        checkButtonsAnswer(view);
     }
 
     @OnClick(R.id.purpleButton)
     public void purpleButton(View view) {
         //String answer = "PURPLE";
-        checkButtonsAnswer(view.getBackground());
+        checkButtonsAnswer(view);
     }
 
     @OnClick(R.id.skyblueButton)
     public void skyBlueButton(View view) {
         //String answer = "SKYBLUE";
-        checkButtonsAnswer(view.getBackground());
+        checkButtonsAnswer(view);
     }
 
     @OnClick(R.id.limegreenButton)
     public void limeGreenButton(View view) {
         //String answer = "LIMEGREEN";
-        checkButtonsAnswer(view.getBackground());
+        checkButtonsAnswer(view);
     }
 
-    private void checkButtonsAnswer(Drawable background) {
+    private void checkButtonsAnswer(View view) {
         String askerDisplay = mAskerTextView.getText().toString();
-        String answer = getDrawableStringName(background);
+        String answer = getDrawableStringName((Button) view);
 
         if (checkAnswers(answer, askerDisplay)) {
             setAsker();
@@ -165,54 +145,31 @@ public class Game extends Activity {
         }
     }
 
-    private String getDrawableStringName(Drawable drawable) {
-
-        String color = "";
-
-        if(drawable == blueTile) {
-            color = "Blue";
-        }
-        else if (drawable == greenTile) {
-            color = "Green";
-        }
-        else if (drawable == limeTile) {
-            color = "Lime";
-        }
-        else if (drawable == orangeTile) {
-            color = "Orange";
-        }
-        else if (drawable == purpleTile) {
-            color = "Purple";
-        }
-        else if (drawable == redTile) {
-            color = "Red";
-        }
-        else if (drawable == skyBlueTile) {
-            color = "Sky Blue";
-        }
-        else if (drawable == yellowTile) {
-            color = "Yellow";
+    private String getDrawableStringName(Button button) {
+        for (RoundDrawable roundDrawable : RoundDrawable.values()) {
+            if (button.getBackground().getConstantState().equals
+                    (getResources().getDrawable(roundDrawable.getId()).getConstantState()))
+                return roundDrawable.getColorName();
         }
 
-
-        return color;
+        return null;
     }
 
     private void shuffleTilesAndSetColor() {
 
-        Drawable[] tilesArray = {blueTile, greenTile, limeTile, orangeTile, purpleTile, redTile, skyBlueTile, yellowTile};
+        RoundDrawable[] tilesArray = RoundDrawable.values();
 
-        List<Drawable> tilesList =  Arrays.asList(tilesArray);
+        List<RoundDrawable> tilesList =  Arrays.asList(tilesArray);
         Collections.shuffle(tilesList);
 
-        blueButton.setBackground(tilesArray[0]);
-        greenButton.setBackground(tilesArray[1]);
-        limeGreenButton.setBackground(tilesArray[2]);
-        orangeButton.setBackground(tilesArray[3]);
-        purpleButton.setBackground(tilesArray[4]);
-        redButton.setBackground(tilesArray[5]);
-        skyblueButton.setBackground(tilesArray[6]);
-        yellowButton.setBackground(tilesArray[7]);
+        blueButton.setBackground(getResources().getDrawable(tilesArray[0].getId()));
+        greenButton.setBackground(getResources().getDrawable(tilesArray[1].getId()));
+        limeGreenButton.setBackground(getResources().getDrawable(tilesArray[2].getId()));
+        orangeButton.setBackground(getResources().getDrawable(tilesArray[3].getId()));
+        purpleButton.setBackground(getResources().getDrawable(tilesArray[4].getId()));
+        redButton.setBackground(getResources().getDrawable(tilesArray[5].getId()));
+        skyblueButton.setBackground(getResources().getDrawable(tilesArray[6].getId()));
+        yellowButton.setBackground(getResources().getDrawable(tilesArray[7].getId()));
     }
 
     public void setAsker() {

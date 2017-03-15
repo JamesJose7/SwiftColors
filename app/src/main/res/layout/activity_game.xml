@@ -13,8 +13,7 @@
         android:background="@drawable/yellowroundedbutton"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
-        android:backgroundTint="@android:color/black"/>
+        android:layout_marginLeft="10dp"/>
 
     <Button
         android:layout_width="90dp"
