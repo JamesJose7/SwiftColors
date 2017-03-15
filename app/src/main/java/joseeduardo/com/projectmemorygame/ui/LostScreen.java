@@ -39,7 +39,7 @@ public class LostScreen extends Activity {
 
         // Get score from previous activity
         Intent intent = getIntent();
-        String score = intent.getStringExtra("score");
+        String score = intent.getStringExtra(Game.SCORE);
         lastScoreTextView.setText(score);
 
         SharedPreferences prefs = this.getSharedPreferences(Game.PREFS_KEY, Context.MODE_PRIVATE);

@@ -28,10 +28,11 @@ public class Game extends Activity {
 
     public static final String PREFS_KEY = "prefsKey";
     public static final String HIGH_SCORE = "highScore";
+    public static final String SCORE = "score";
 
-    private Asker mAsker = new Asker();
-    private ScoreBoard mScoreBoard = new ScoreBoard();
-    final Timer mTimer = new Timer(3000, 1000);
+    private Asker mAsker;
+    private ScoreBoard mScoreBoard;
+    protected Timer mTimer;
 
     @BindView(R.id.askerTextView) TextView mAskerTextView;
     @BindView(R.id.scoreTextView) TextView mScoreTextView;
@@ -65,6 +66,10 @@ public class Game extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         ButterKnife.bind(this);
+
+        mAsker = new Asker();
+        mScoreBoard  = new ScoreBoard();
+        mTimer  = new Timer(3000, 1000);
 
         //All them drawables
         blueTile = getResources().getDrawable(R.drawable.blueroundedbutton);
@@ -211,18 +216,14 @@ public class Game extends Activity {
     }
 
     public void setAsker() {
-
         mAskerTextView.setText(mAsker.getColorText());
         mAskerTextView.setBackgroundColor(mAsker.getColor());
     }
 
     public boolean checkAnswers(String answer, String askerDisplay) {
-        boolean result = false;
-        if (answer == askerDisplay) {
-            result = true;
-        }
-
-        return result;
+        if (answer.equals(askerDisplay))
+            return true;
+        return false;
     }
 
     public void checkEmptyScore() {
@@ -235,7 +236,7 @@ public class Game extends Activity {
     public void startLostScreenActivity(String score) {
         mTimer.cancel();
         Intent intent = new Intent(this, LostScreen.class);
-        intent.putExtra("score", score);
+        intent.putExtra(SCORE, score);
         startActivity(intent);
     }
 
@@ -246,13 +247,13 @@ public class Game extends Activity {
 
     public void getHighScore() {
 
-        SharedPreferences prefs = this.getSharedPreferences("prefsKey", Context.MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
         if (Integer.parseInt(mNewScore) > mSavedScore) {
             int highScore = Integer.parseInt(mNewScore);
-            editor.putInt("highScore", highScore);
-            editor.commit();
+            editor.putInt(HIGH_SCORE, highScore);
+            editor.apply();
         }
     }
 
@@ -261,7 +262,6 @@ public class Game extends Activity {
 
         public Timer(long millisInFuture, long countDownInterval) {
             super(millisInFuture, countDownInterval);
-
         }
 
         @Override
