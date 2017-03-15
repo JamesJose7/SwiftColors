@@ -14,7 +14,8 @@ public enum RoundDrawable {
     PURPLE("Purple", R.drawable.purpleroundedbutton),
     RED("Red", R.drawable.redroundedbutton),
     SKY_BLUE("Sky Blue", R.drawable.skyblueroundedbutton),
-    YELLOW("Yellow", R.drawable.yellowroundedbutton);
+    YELLOW("Yellow", R.drawable.yellowroundedbutton),
+    BLACK("Black", R.drawable.black_tile);
 
     private String colorName;
     private int id;
@@ -30,5 +31,14 @@ public enum RoundDrawable {
 
     public int getId() {
         return id;
+    }
+
+    public static RoundDrawable[] getAllExceptBlack() {
+        int size = RoundDrawable.values().length - 1;
+        RoundDrawable[] roundDrawables = new RoundDrawable[size];
+        for (int i = 0; i < size; i++)
+            roundDrawables[i] = RoundDrawable.values()[i];
+
+        return roundDrawables;
     }
 }

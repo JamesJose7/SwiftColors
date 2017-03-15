@@ -42,6 +42,7 @@ public class Game extends Activity implements Timer.TimerListener {
 
     private int mNewScore;
     private int mSavedScore;
+    private boolean mBlackMode = false;
 
     @BindView(R.id.redButton) Button redButton;
     @BindView(R.id.yellowButton) Button yellowButton;
@@ -62,7 +63,7 @@ public class Game extends Activity implements Timer.TimerListener {
 
         mAsker = new Asker();
         mScoreBoard  = new ScoreBoard();
-        mCurrentDuration = 5;
+        mCurrentDuration = 6;
         mTimer  = new Timer(mCurrentDuration, this);
 
         //Version
@@ -135,6 +136,8 @@ public class Game extends Activity implements Timer.TimerListener {
             //Increase score
             updateScore();
 
+            changeDifficulty();
+
             mTimer.cancelTimer();
             mTimer = new Timer(mCurrentDuration, this);
             mTimer.start();
@@ -156,20 +159,26 @@ public class Game extends Activity implements Timer.TimerListener {
     }
 
     private void shuffleTilesAndSetColor() {
-        RoundDrawable[] tilesArray = RoundDrawable.values();
+        RoundDrawable[] tilesArray;
+        if (!mBlackMode)
+            tilesArray = RoundDrawable.getAllExceptBlack();
+        else
+            tilesArray = RoundDrawable.values();
+
         Button[] buttons = {blueButton, greenButton, limeGreenButton, orangeButton, purpleButton,
             redButton, skyblueButton, yellowButton};
 
         List<RoundDrawable> tilesList =  Arrays.asList(tilesArray);
         Collections.shuffle(tilesList);
 
-        for (int i = 0; i < tilesList.size(); i++) {
+        for (int i = 0; i < buttons.length; i++) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 buttons[i].setBackground(getDrawable(tilesList.get(i).getId()));
             } else {
                 buttons[i].setBackground(getResources().getDrawable(tilesList.get(i).getId()));
             }
         }
+
     }
 
     public void  setAsker() {
@@ -178,7 +187,7 @@ public class Game extends Activity implements Timer.TimerListener {
     }
 
     public boolean checkAnswers(String answer, String askerDisplay) {
-        if (answer.equals(askerDisplay))
+        if (answer.equals(askerDisplay) || answer.equals(RoundDrawable.BLACK.getColorName()))
             return true;
         return false;
     }
@@ -203,6 +212,24 @@ public class Game extends Activity implements Timer.TimerListener {
             int highScore = mNewScore;
             editor.putInt(HIGH_SCORE, highScore);
             editor.apply();
+        }
+    }
+
+    private void changeDifficulty() {
+        switch (mNewScore) {
+            case 8:
+                //medium
+                mCurrentDuration = 4;
+                break;
+            case 16:
+                //hard
+                mCurrentDuration = 2;
+                break;
+            case 24:
+                //try this
+                mBlackMode = true;
+                break;
+            default:
         }
     }
 
