@@ -71,11 +71,8 @@ public class Game extends Activity {
         mTimer.start();
         shuffleTilesAndSetColor();
 
-        yellowButton.getDrawableState();
-
         // Get the previous highscore
         SharedPreferences prefs = getSharedPreferences(PREFS_KEY, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
         mSavedScore = prefs.getInt(HIGH_SCORE, 0);
     }
 
@@ -173,7 +170,7 @@ public class Game extends Activity {
         }
     }
 
-    public void setAsker() {
+    public void  setAsker() {
         mAskerTextView.setText(mAsker.getColorText());
         mAskerTextView.setBackgroundColor(mAsker.getColor());
     }

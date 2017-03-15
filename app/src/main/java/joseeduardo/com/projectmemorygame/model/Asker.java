@@ -1,5 +1,6 @@
 package joseeduardo.com.projectmemorygame.model;
 
+import android.content.res.AssetManager;
 import android.graphics.Color;
 
 import java.util.Random;
@@ -8,6 +9,8 @@ import java.util.Random;
  * Created by Jose on 18/01/2015.
  */
 public class Asker {
+
+    private Random randomGenerator;
     private String[] mColorText = {
             "Red",
             "Yellow",
@@ -29,24 +32,22 @@ public class Asker {
             "#ffffdd00"
     };
 
+    public Asker() {
+        randomGenerator = new Random();
+    }
+
     public int getColor() {
+        String color;
 
-        String color = "";
-
-        Random randomGenerator = new Random();
         int randomNumber = randomGenerator.nextInt(mColor.length);
 
         color = mColor[randomNumber];
-        int colorAsInt = Color.parseColor(color);
-
-        return colorAsInt;
+        return Color.parseColor(color);
     }
 
     public String getColorText() {
+        String color;
 
-        String color = "";
-
-        Random randomGenerator = new Random();
         int randomNumber = randomGenerator.nextInt(mColorText.length);
 
         color = mColorText[randomNumber];
