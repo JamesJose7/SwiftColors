@@ -21,6 +21,7 @@ import joseeduardo.com.projectmemorygame.R;
 
 public class HowToPlay extends Activity {
 
+    private boolean tutorialFinished = false;
 
     @BindView(R.id.page_bg)
     RelativeLayout pageBg;
@@ -120,18 +121,23 @@ public class HowToPlay extends Activity {
 
     @OnClick(R.id.page4)
     public void toPage5() {
-        pageBg.setVisibility(View.GONE);
-        page5.setAlpha(0);
-        page5.setVisibility(View.VISIBLE);
-        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(page4, "alpha", 1, 0);
-        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(page5, "alpha", 0, 1);
+        if (!tutorialFinished) {
+            pageBg.setVisibility(View.GONE);
+            page5.setAlpha(0);
+            page5.setVisibility(View.VISIBLE);
+            ObjectAnimator fadeOut = ObjectAnimator.ofFloat(page4, "alpha", 1, 0);
+            ObjectAnimator fadeIn = ObjectAnimator.ofFloat(page5, "alpha", 0, 1);
 
-        AnimatorSet fade = new AnimatorSet();
-        fade.playTogether(fadeOut, fadeIn);
-        fade.setDuration(400);
-        fade.start();
+            AnimatorSet fade = new AnimatorSet();
+            fade.playTogether(fadeOut, fadeIn);
+            fade.setDuration(400);
+            fade.start();
 
-        page3.setVisibility(View.GONE);
+            page3.setVisibility(View.GONE);
+            tutorialFinished = true;
+        } else {
+            page4.setVisibility(View.GONE);
+        }
     }
 
 }
