@@ -27,6 +27,18 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/play_black_button"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/how_to_play"
+        android:text="How to Play"
+        android:textAllCaps="false"
+        android:layout_toRightOf="@id/startGame"
+        android:layout_toEndOf="@id/startGame"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"/>
+
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"

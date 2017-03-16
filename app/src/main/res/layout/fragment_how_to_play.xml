@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="joseeduardo.com.projectmemorygame.ui.HowToPlayFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/page1">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/page2">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/page3">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/page4">
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/page5"
+        android:background="#BF000000"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:text="Rules"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/close_tutorial"
+                android:layout_weight="90"
+                android:src="@drawable/ic_close"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="The further you get, the harder it'll get"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/rule1"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/rule2"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/rule3"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="List of colors"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="50"
+                    android:weightSum="80">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:orientation="horizontal"
+                        android:weightSum="100"
+                        android:padding="5dp">
+
+                        <joseeduardo.com.projectmemorygame.model.SquareImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/blueroundedbutton"
+                            android:layout_weight="50"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="50"
+                            android:text="Blue"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="25sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:orientation="horizontal"
+                        android:weightSum="100"
+                        android:padding="5dp">
+
+                        <joseeduardo.com.projectmemorygame.model.SquareImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/greenroundedbutton"
+                            android:layout_weight="50"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="50"
+                            android:text="Green"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="25sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:orientation="horizontal"
+                        android:weightSum="100"
+                        android:padding="5dp">
+
+                        <joseeduardo.com.projectmemorygame.model.SquareImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/limegreenroundedbutton"
+                            android:layout_weight="50"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="50"
+                            android:text="Lime Green"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="25sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:orientation="horizontal"
+                        android:weightSum="100"
+                        android:padding="5dp">
+
+                        <joseeduardo.com.projectmemorygame.model.SquareImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/orangeroundedbutton"
+                            android:layout_weight="50"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="50"
+                            android:text="Orange"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="25sp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="50"
+                    android:weightSum="80">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:orientation="horizontal"
+                        android:weightSum="100"
+                        android:padding="5dp">
+
+                        <joseeduardo.com.projectmemorygame.model.SquareImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/purpleroundedbutton"
+                            android:layout_weight="50"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="50"
+                            android:text="Purple"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="25sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:orientation="horizontal"
+                        android:weightSum="100"
+                        android:padding="5dp">
+
+                        <joseeduardo.com.projectmemorygame.model.SquareImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/redroundedbutton"
+                            android:layout_weight="50"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="50"
+                            android:text="Red"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="25sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:orientation="horizontal"
+                        android:weightSum="100"
+                        android:padding="5dp">
+
+                        <joseeduardo.com.projectmemorygame.model.SquareImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/skyblueroundedbutton"
+                            android:layout_weight="50"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="50"
+                            android:text="Sky Blue"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="25sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:orientation="horizontal"
+                        android:weightSum="100"
+                        android:padding="5dp">
+
+                        <joseeduardo.com.projectmemorygame.model.SquareImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/yellowroundedbutton"
+                            android:layout_weight="50"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="50"
+                            android:text="Yellow"
+                            android:gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="25sp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

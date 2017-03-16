@@ -41,6 +41,11 @@ public class MainScreen extends Activity {
         startActivity(intent);
     }
 
+    @OnClick(R.id.how_to_play)
+    public void startTutorial() {
+        Intent intent = new Intent(this, HowToPlay.class);
+        startActivity(intent);
+    }
 
 
 }
