@@ -5,33 +5,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="joseeduardo.com.projectmemorygame.ui.HowToPlayFragment">
+    tools:context="joseeduardo.com.projectmemorygame.ui.HowToPlayFragment"
+    android:background="#BF000000">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/page1">
+        android:id="@+id/page_bg">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/page_bg"
+            />
+
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/page2">
+        android:id="@+id/page1"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/image1"
+            />
+
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/page3">
+        android:id="@+id/page2"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/image2"
+            />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/page4">
+        android:id="@+id/page3"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/image3"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/page4"
+        android:visibility="gone">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/image4"
+            />
 
     </RelativeLayout>
 
@@ -40,8 +86,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/page5"
-        android:background="#BF000000"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:visibility="invisible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +95,7 @@
             android:orientation="horizontal"
             android:weightSum="100">
 
-            <TextView
+            <joseeduardo.com.projectmemorygame.model.WhiteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="10"
@@ -65,7 +111,7 @@
                 android:src="@drawable/ic_close"/>
         </LinearLayout>
 
-        <TextView
+        <joseeduardo.com.projectmemorygame.model.WhiteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -74,27 +120,27 @@
             android:layout_marginBottom="8dp"
             android:textSize="18sp"/>
 
-        <TextView
+        <joseeduardo.com.projectmemorygame.model.WhiteTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:text="@string/rule1"
             android:layout_marginBottom="5dp"/>
 
-        <TextView
+        <joseeduardo.com.projectmemorygame.model.WhiteTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:text="@string/rule2"
             android:layout_marginBottom="5dp"/>
 
-        <TextView
+        <joseeduardo.com.projectmemorygame.model.WhiteTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:text="@string/rule3"/>
 
-        <TextView
+        <joseeduardo.com.projectmemorygame.model.WhiteTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="List of colors"
@@ -134,14 +180,14 @@
                             android:background="@drawable/blueroundedbutton"
                             android:layout_weight="50"/>
 
-                        <TextView
+                        <joseeduardo.com.projectmemorygame.model.WhiteTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
                             android:text="Blue"
                             android:gravity="center_vertical"
                             android:layout_marginLeft="5dp"
-                            android:textSize="25sp"/>
+                            android:textSize="18sp"/>
 
                     </LinearLayout>
 
@@ -159,14 +205,14 @@
                             android:background="@drawable/greenroundedbutton"
                             android:layout_weight="50"/>
 
-                        <TextView
+                        <joseeduardo.com.projectmemorygame.model.WhiteTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
                             android:text="Green"
                             android:gravity="center_vertical"
                             android:layout_marginLeft="5dp"
-                            android:textSize="25sp"/>
+                            android:textSize="18sp"/>
 
                     </LinearLayout>
 
@@ -184,14 +230,14 @@
                             android:background="@drawable/limegreenroundedbutton"
                             android:layout_weight="50"/>
 
-                        <TextView
+                        <joseeduardo.com.projectmemorygame.model.WhiteTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
                             android:text="Lime Green"
                             android:gravity="center_vertical"
                             android:layout_marginLeft="5dp"
-                            android:textSize="25sp"/>
+                            android:textSize="18sp"/>
 
                     </LinearLayout>
 
@@ -209,14 +255,14 @@
                             android:background="@drawable/orangeroundedbutton"
                             android:layout_weight="50"/>
 
-                        <TextView
+                        <joseeduardo.com.projectmemorygame.model.WhiteTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
                             android:text="Orange"
                             android:gravity="center_vertical"
                             android:layout_marginLeft="5dp"
-                            android:textSize="25sp"/>
+                            android:textSize="18sp"/>
 
                     </LinearLayout>
 
@@ -243,14 +289,14 @@
                             android:background="@drawable/purpleroundedbutton"
                             android:layout_weight="50"/>
 
-                        <TextView
+                        <joseeduardo.com.projectmemorygame.model.WhiteTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
                             android:text="Purple"
                             android:gravity="center_vertical"
                             android:layout_marginLeft="5dp"
-                            android:textSize="25sp"/>
+                            android:textSize="18sp"/>
 
                     </LinearLayout>
 
@@ -268,14 +314,14 @@
                             android:background="@drawable/redroundedbutton"
                             android:layout_weight="50"/>
 
-                        <TextView
+                        <joseeduardo.com.projectmemorygame.model.WhiteTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
                             android:text="Red"
                             android:gravity="center_vertical"
                             android:layout_marginLeft="5dp"
-                            android:textSize="25sp"/>
+                            android:textSize="18sp"/>
 
                     </LinearLayout>
 
@@ -293,14 +339,14 @@
                             android:background="@drawable/skyblueroundedbutton"
                             android:layout_weight="50"/>
 
-                        <TextView
+                        <joseeduardo.com.projectmemorygame.model.WhiteTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
                             android:text="Sky Blue"
                             android:gravity="center_vertical"
                             android:layout_marginLeft="5dp"
-                            android:textSize="25sp"/>
+                            android:textSize="18sp"/>
 
                     </LinearLayout>
 
@@ -318,14 +364,14 @@
                             android:background="@drawable/yellowroundedbutton"
                             android:layout_weight="50"/>
 
-                        <TextView
+                        <joseeduardo.com.projectmemorygame.model.WhiteTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="50"
                             android:text="Yellow"
                             android:gravity="center_vertical"
                             android:layout_marginLeft="5dp"
-                            android:textSize="25sp"/>
+                            android:textSize="18sp"/>
 
                     </LinearLayout>
 

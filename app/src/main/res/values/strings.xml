@@ -19,5 +19,6 @@
     <string name="rule1"><b>• 8 correct guesses:</b> Time decreased to 4s</string>
     <string name="rule2"><b>• 16 correct guesses:</b> Time decreased to 2s</string>
     <string name="rule3"><b>• 24 correct guesses:</b> One color will appear black, meaning you should select that one if the color that appears in the center is missing</string>
+    <string name="title_activity_test">Test</string>
 
 </resources>

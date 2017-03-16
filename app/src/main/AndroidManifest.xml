@@ -4,8 +4,10 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.MainScreen"
@@ -42,6 +44,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="joseeduardo.com.projectmemorygame.ui.MainScreen"/>
+        </activity>
+        <activity
+            android:name=".ui.Test"
+            android:label="@string/title_activity_test">
         </activity>
     </application>
 
