@@ -197,6 +197,7 @@ public class Game extends Activity implements Timer.TimerListener {
         Intent intent = new Intent(this, LostScreen.class);
         intent.putExtra(SCORE, score);
         startActivity(intent);
+        finish();
     }
 
     public void updateScore() {
@@ -235,8 +236,8 @@ public class Game extends Activity implements Timer.TimerListener {
 
     @Override
     public void onFinish() {
-        startLostScreenActivity(mNewScore);
         getHighScore();
+        startLostScreenActivity(mNewScore);
     }
 
     @Override
